@@ -58,7 +58,7 @@ int main()
 
     load();
 
-    length=5;
+    length=105;
 
     head.x=25;
 
@@ -233,14 +233,13 @@ void load()
 void Down()
 {
     int i;
+    
     for(i=0; i<=(head.y-bend[bend_no].y)&&len<length; i++)
     {
         GotoXY(head.x,head.y-i);
         {
             if(len==0)
-                printf("v");
-            else
-                printf("*");
+                printf("(:-)");
         }
         body[len].x=head.x;
         body[len].y=head.y-i;
@@ -322,9 +321,7 @@ void Left()
         GotoXY((head.x+i),head.y);
         {
             if(len==0)
-                printf("<");
-            else
-                printf("*");
+                printf("(:-)");
         }
         body[len].x=head.x+i;
         body[len].y=head.y;
@@ -346,9 +343,8 @@ void Right()
         GotoXY(body[len].x,body[len].y);
         {
             if(len==0)
-                printf(">");
-            else
-                printf("*");
+                printf("(:-)");
+
         }
         /*body[len].x=head.x-i;
         body[len].y=head.y;*/
@@ -372,7 +368,7 @@ void Bend()
                     body[len].x=bend[i].x;
                     body[len].y=bend[i].y+j;
                     GotoXY(body[len].x,body[len].y);
-                    printf("*");
+                  //  printf("*");
                     len++;
                     if(len==length)
                         break;
@@ -385,7 +381,7 @@ void Bend()
                     body[len].x=bend[i].x;
                     body[len].y=bend[i].y-j;
                     GotoXY(body[len].x,body[len].y);
-                    printf("*");
+                   // printf("*");
                     len++;
                     if(len==length)
                         break;
@@ -402,7 +398,7 @@ void Bend()
                     body[len].x=bend[i].x+j;
                     body[len].y=bend[i].y;
                     GotoXY(body[len].x,body[len].y);
-                    printf("*");
+                   // printf("*");
                     len++;
                     if(len==length)
                         break;
@@ -415,7 +411,7 @@ void Bend()
                     body[len].x=bend[i].x-j;
                     body[len].y=bend[i].y;
                     GotoXY(body[len].x,body[len].y);
-                    printf("*");
+                  //  printf("*");
                     len++;
                     if(len==length)
                         break;
@@ -509,7 +505,7 @@ void record()
 }
 int Score()
 {
-    int score;
+    int score =100;
     GotoXY(20,8);
     score=length-5;
     printf("SCORE : %d",(length-5));
@@ -532,13 +528,14 @@ void Up()
         GotoXY(head.x,head.y+i);
         {
             if(len==0)
-                printf("^");
-            else
-                printf("*");
+                printf("(-:)");
+                
         }
         body[len].x=head.x;
         body[len].y=head.y+i;
         len++;
+      //  fprintf(info,"Score:%d\n",px=Scoreonly());//call score to display score
+        
     }
     Bend();
     if(!kbhit())
