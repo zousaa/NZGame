@@ -35,6 +35,7 @@ void Up();
 void Right();
 void ExitGame();
 int Scoreonly();
+void ExitGameWhenTresorFound();
 
 struct coordinate
 {
@@ -58,7 +59,7 @@ int main()
 
     load();
 
-    length=105;
+    length=100;
 
     head.x=25;
 
@@ -70,7 +71,7 @@ int main()
 
     Food(); //to generate food coordinates initially
 
-    life=3; //number of extra lives
+    life=length/20; //number of extra lives
 
     bend[0]=head;
 
@@ -100,7 +101,7 @@ void Move()
 
             body[i].y=0;
 
-            if(i==length)
+            if(i==0)
 
                 break;
 
@@ -127,6 +128,8 @@ void Move()
             Up();
 
         ExitGame();
+        ExitGameWhenTresorFound();
+        
 
     }
     while(!kbhit());
@@ -233,6 +236,7 @@ void load()
 void Down()
 {
     int i;
+    length--;
     
     for(i=0; i<=(head.y-bend[bend_no].y)&&len<length; i++)
     {
@@ -255,21 +259,35 @@ void Delay(long double k)
     long double i;
     for(i=0; i<=(10000000); i++);
 }
+
 void ExitGame()
 {
     int i,check=0;
+    if(length == 0){
+    	    system("cls");
+            printf("All lives completed\nBetter Luck Next Time!!!\nPress any key to quit the game\n");
+            record();
+            exit(0);
+    	
+    }
+    	
     for(i=4; i<length; i++) //starts with 4 because it needs minimum 4 element to touch its own body
     {
-        if(body[0].x==body[i].x&&body[0].y==body[i].y)
+        if(body[0].x==body[i].x&&body[0].y==body[i].y )
         {
             check++;    //check's value increases as the coordinates of head is equal to any other body coordinate
         }
-        if(i==length||check!=0)
-            break;
+        if(i==length||check!=0 )
+           break;
     }
-    if(head.x<=10||head.x>=70||head.y<=10||head.y>=30||check!=0)
+    
+    //Exit when tresor coordinate t
+	
+    
+    if(head.x<=10||head.x>=70||head.y<=10||head.y>=30)
     {
         life--;
+        
         if(life>=0)
         {
             head.x=25;
@@ -287,11 +305,27 @@ void ExitGame()
         }
     }
 }
+
+void ExitGameWhenTresorFound()
+{
+    	   if(head.x==food.x&&head.y==food.y)
+    {
+    	
+		system("cls");
+        printf("All lives completed\nBetter Luck Next Time!!!\nPress any key to quit the game\n");
+        record();
+        exit(0);
+    }
+    	
+}
+
 void Food()
 {
-    if(head.x==food.x&&head.y==food.y)
-    {
-        length++;
+    //if(head.x==food.x&&head.y==food.y)
+//    {
+//        length++;
+
+/*
         time_t a;
         a=time(0);
         srand(a);
@@ -301,9 +335,13 @@ void Food()
         food.y=rand()%30;
         if(food.y<=10)
 
-            food.y+=11;
-    }
-    else if(food.x==0)/*to create food for the first time coz global variable are initialized with 0*/
+            food.y+=11; */
+            
+  //          ExitGameWhenTresorFound();
+            
+   // }
+    //else 
+	if(food.x==0)/*to create food for the first time coz global variable are initialized with 0*/
     {
         food.x=rand()%70;
         if(food.x<=10)
@@ -316,6 +354,7 @@ void Food()
 void Left()
 {
     int i;
+    length--;
     for(i=0; i<=(bend[bend_no].x-head.x)&&len<length; i++)
     {
         GotoXY((head.x+i),head.y);
@@ -335,6 +374,7 @@ void Left()
 void Right()
 {
     int i;
+    length--;
     for(i=0; i<=(head.x-bend[bend_no].x)&&len<length; i++)
     {
         //GotoXY((head.x-i),head.y);
@@ -505,11 +545,11 @@ void record()
 }
 int Score()
 {
-    int score =100;
+    int score ;
     GotoXY(20,8);
-    score=length-5;
-    printf("SCORE : %d",(length-5));
-    score=length-5;
+    score=length;
+    printf("SCORE : %d",(length));
+    score=length;
     GotoXY(50,8);
     printf("Life : %d",life);
     return score;
@@ -523,6 +563,7 @@ int Scoreonly()
 void Up()
 {
     int i;
+    length--;
     for(i=0; i<=(bend[bend_no].y-head.y)&&len<length; i++)
     {
         GotoXY(head.x,head.y+i);
