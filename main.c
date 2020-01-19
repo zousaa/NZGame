@@ -508,12 +508,16 @@ void record() {
 }
 int Score() {
 	int score;
-	GotoXY(20, 8);
+	GotoXY(10, 8);
 	score = length;
-	printf("SCORE : %d", (length));
+	printf("Life Index : %d %%", (length));
 	score = length;
-	GotoXY(50, 8);
+	GotoXY(10, 9);
 	printf("Life : %d", life);
+	printf("\0x3","%c");	
+	SetConsoleOutputCP(CP_UTF8);
+// 3 hex bytes in UTF-8 => one 'heart' symbol
+    printf("%c%c%c\n", '\xE2', '\x99', '\xA5');
 	return score;
 }
 int Scoreonly() {

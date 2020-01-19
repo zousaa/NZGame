@@ -1,3 +1,4 @@
+
 Player Name :Jawad ZOULGAMI
 Played Date:18/01/2019
 Score:6
@@ -104,5 +105,29 @@ Score:77
 ___________________________________________________
 Player Name :
 Played Date:Sun Jan 19 10:34:15 2020
+Score:0
+___________________________________________________
+Player Name :Game01
+Played Date:Sun Jan 19 12:06:48 2020
+Score:46
+___________________________________________________
+Player Name :Game033
+Played Date:Sun Jan 19 12:08:45 2020
+Score:0
+___________________________________________________
+Player Name :Game00
+Played Date:Sun Jan 19 12:10:01 2020
+Score:0
+___________________________________________________
+Player Name :
+Played Date:Sun Jan 19 12:19:30 2020
+Score:41
+___________________________________________________
+Player Name :Jawad
+Played Date:Sun Jan 19 12:30:12 2020
+Score:51
+___________________________________________________
+Player Name :Jawad 002
+Played Date:Sun Jan 19 12:31:28 2020
 Score:0
 ___________________________________________________
